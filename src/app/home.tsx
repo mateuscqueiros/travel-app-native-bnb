@@ -1,3 +1,4 @@
+import { Categories, FilterTags } from '@/features/categories';
 import { FontAwesome } from '@expo/vector-icons';
 import { useState } from 'react';
 import {
@@ -17,6 +18,8 @@ const topMargin = ios ? 'pt-3' : 'pt-14';
 
 export default function HomeScreen() {
   const [search, setSearch] = useState('');
+  const [activeCategory, setActiveCategory] = useState<number | null>(null);
+  const [activeTag, setActiveTag] = useState<number | null>(null);
   return (
     <SafeAreaView>
       <ScrollView showsHorizontalScrollIndicator={false} className={topMargin}>
@@ -52,7 +55,15 @@ export default function HomeScreen() {
 
       {/* categories */}
       <View className="mb-4">
-        <Categories />
+        <Categories
+          activeCategory={activeCategory}
+          setActiveCategory={setActiveCategory}
+        />
+      </View>
+
+      {/* Filter tags */}
+      <View className="mb-4">
+        <FilterTags activeTag={activeTag} setActiveTag={setActiveTag} />
       </View>
     </SafeAreaView>
   );
