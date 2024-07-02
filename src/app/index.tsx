@@ -1,11 +1,14 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import { Image, Text, View } from 'react-native';
+import { useRouter } from 'expo-router';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 import {
-  heightPercentageToDP,
-  widthPercentageToDP,
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 
 export default function WelcomeScreen() {
+  const router = useRouter();
+
   return (
     <View className="flex-1 flex justify-end">
       <Image
@@ -17,8 +20,8 @@ export default function WelcomeScreen() {
         <LinearGradient
           colors={['transparent', 'rgba(3,105,161,0.8)']}
           style={{
-            width: widthPercentageToDP(100),
-            height: heightPercentageToDP(60),
+            width: wp(100),
+            height: hp(60),
           }}
           start={{ x: 0.5, y: 0 }}
           end={{ x: 0.5, y: 1 }}
@@ -26,12 +29,27 @@ export default function WelcomeScreen() {
         />
         <View className="space-y-3">
           <Text
-            className="text-white font-bold text-xl"
-            style={{ fontSize: widthPercentageToDP(60) }}
+            className="text-white font-bold text-5xl"
+            style={{ fontSize: wp(10) }}
           >
             Facilitando as viagens
           </Text>
+          <Text
+            className="text-neutral-200 font-medium"
+            style={{ fontSize: wp(4) }}
+          >
+            Vivencie as melhores aventuras do mundo conosco!
+          </Text>
         </View>
+
+        <TouchableOpacity
+          onPress={() => router.push('home')}
+          className="bg-orange-500 mx-auto p-3 px-12 rounded-full"
+        >
+          <Text className="text-white font-bold" style={{ fontSize: wp(5.5) }}>
+            Vamos lá
+          </Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
