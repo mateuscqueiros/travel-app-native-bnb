@@ -39,43 +39,43 @@ export default function HomeScreen() {
             />
           </TouchableOpacity>
         </View>
-      </ScrollView>
 
-      {/* searchbar */}
-      <View className="mx-5 mb-4">
-        <View className="flex-row items-center bg-neutral-200 rounded-full p-4 space-x-2 pl-6">
-          <FontAwesome name="search" size={20} strokeWidth={3} color="gray" />
-          <TextInput
-            value={search}
-            onChangeText={setSearch}
-            placeholder="Buscar um destino"
-            placeholderTextColor="gray"
-            className="flex-1 text-base pl-1 tracking-wider"
+        {/* searchbar */}
+        <View className="mx-5 mb-4">
+          <View className="flex-row items-center bg-neutral-200 rounded-full p-4 space-x-2 pl-6">
+            <FontAwesome name="search" size={20} strokeWidth={3} color="gray" />
+            <TextInput
+              value={search}
+              onChangeText={setSearch}
+              placeholder="Buscar um destino"
+              placeholderTextColor="gray"
+              className="flex-1 text-base pl-1 tracking-wider"
+            />
+          </View>
+        </View>
+
+        {/* categories */}
+        <View className="mb-4">
+          <Categories
+            activeCategory={activeCategory}
+            setActiveCategory={setActiveCategory}
           />
         </View>
-      </View>
 
-      {/* categories */}
-      <View className="mb-4">
-        <Categories
-          activeCategory={activeCategory}
-          setActiveCategory={setActiveCategory}
-        />
-      </View>
+        {/* Filter tags */}
+        <View className="mb-4">
+          <FilterTags activeTag={activeTag} setActiveTag={setActiveTag} />
+        </View>
 
-      {/* Filter tags */}
-      <View className="mb-4">
-        <FilterTags activeTag={activeTag} setActiveTag={setActiveTag} />
-      </View>
-
-      {/* Destinations List */}
-      <View>
-        <DestinationList
-          search={search}
-          activeCategory={activeCategory}
-          activeTag={activeTag}
-        />
-      </View>
+        {/* Destinations List */}
+        <View>
+          <DestinationList
+            search={search}
+            activeCategory={activeCategory}
+            activeTag={activeTag}
+          />
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
